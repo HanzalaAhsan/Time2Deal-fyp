@@ -1,5 +1,5 @@
 "use client"
-
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import { LayoutDashboard, Package, PackageMinus, Percent, Clock, Settings, LogOut } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -13,7 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { useState } from "react"
+
 import { logout } from "@/utils/auth"
 
 export function Sidebar({ isOpen, setIsOpen, setAuth }) {
@@ -119,4 +119,4 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
     </>
   )
 }
-
+export default Sidebar;

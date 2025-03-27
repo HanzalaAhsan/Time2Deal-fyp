@@ -14,9 +14,47 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# from django.contrib import admin
+# from django.urls import path, include 
+# from django.http import JsonResponse
+# from authentication.views import test_view 
+
+# def test_view(request):
+#     return JsonResponse({"message": "Django is working!"})
+
+# urlpatterns = [
+#     path("", home),  # 👈 Add this line for the homepage
+#     path("admin/", admin.site.urls),
+#     path("api/test/", test_view, name="test_api"),  # Make sure this is present
+# ]
+
+# from django.contrib import admin
+# from django.urls import path, include
+# from django.http import JsonResponse
+# from authentication.views import test_view
+
+# def home(request):
+#     return JsonResponse({"message": "Django is working!"})
+
+# urlpatterns = [
+#     path("", home, name="home"),
+#     path("admin/", admin.site.urls),
+#     path("api/test/", test_view, name="test_api"),
+# ]
+
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.http import JsonResponse
+from authentication.views import test_view  # Ensure this import works
+
+def home(request):
+    return JsonResponse({"message": "Django is working!"})
 
 urlpatterns = [
+    path("", home, name="home"),
     path("admin/", admin.site.urls),
+    path("api/", include("authentication.urls")),  # 👈 Ensure authentication.urls is included
 ]
+
+
