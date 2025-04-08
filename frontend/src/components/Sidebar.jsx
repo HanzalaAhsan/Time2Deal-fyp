@@ -1,5 +1,5 @@
 "use client"
-
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import {
   LayoutDashboard,
@@ -23,7 +23,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { useState } from "react"
+
 import { logout } from "@/utils/auth"
 
 export function Sidebar({ isOpen, setIsOpen, setAuth }) {
@@ -151,4 +151,4 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
     </>
   )
 }
-
+export default Sidebar;

@@ -15,19 +15,32 @@ import Settings from "./pages/Settings"
 import Inventory from "./pages/Inventory"
 import PointOfSale from "./pages/PointOfSale"
 import Orders from "./pages/Orders"
+import axios from 'axios';
+
 
 function App() {
-  const [auth, setAuth] = useState(isAuthenticated())
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [auth, setAuth] = useState(isAuthenticated());
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [inventoryData, setInventoryData] = useState([]); // ✅ State for inventory
 
   useEffect(() => {
     const checkAuth = () => {
-      setAuth(isAuthenticated())
-    }
+      setAuth(isAuthenticated());
+    };
 
-    window.addEventListener("storage", checkAuth)
-    return () => window.removeEventListener("storage", checkAuth)
-  }, [])
+    window.addEventListener("storage", checkAuth);
+    return () => window.removeEventListener("storage", checkAuth);
+  }, []);
+
+  // ✅ Fetch inventory data from backend
+  useEffect(() => {
+    axios.get("http://127.0.0.1:8000/api/inventory/")
+      .then(response => {
+        console.log("Inventory Data:", response.data);
+        setInventoryData(response.data);
+      })
+      .catch(error => console.error("Error fetching inventory:", error));
+  }, []);
 
   return (
     <Router>
@@ -66,8 +79,7 @@ function App() {
       </div>
       <Toaster />
     </Router>
-  )
+  );
 }
 
-export default App
-
+export default App;

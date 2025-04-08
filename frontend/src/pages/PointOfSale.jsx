@@ -191,28 +191,28 @@ export default function PointOfSale() {
   }
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen">
+    <div className="p-6 bg-black-900 min-h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left side - Medicine search and list */}
         <div className="lg:col-span-2">
-          <Card className="bg-gray-800 border border-gray-700 shadow-md">
-            <CardHeader className="border-b border-gray-700">
-              <CardTitle className="text-xl font-bold text-white">Search Medicines</CardTitle>
+          <Card className="bg-black-800 border border-black-700 shadow-md">
+            <CardHeader className="border-b border-black-700">
+              <CardTitle className="text-xl font-bold text-black">Search Medicines</CardTitle>
               <div className="relative mt-2">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black-400 h-4 w-4" />
                 <Input
                   placeholder="Search medicines..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                  className="pl-10 bg-black-700 border-black-600 text-black placeholder:text-black-400"
                 />
               </div>
             </CardHeader>
             <CardContent className="pt-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {filteredMedicines.map((medicine) => (
-                  <Card key={medicine.id} className="bg-gray-700 border border-gray-600 overflow-hidden">
-                    <div className="p-2 flex justify-center bg-gray-600">
+                  <Card key={medicine.id} className="bg-black-700 border border-black-600 overflow-hidden">
+                    <div className="p-2 flex justify-center bg-black-600">
                       <img
                         src={medicine.image || "/placeholder.svg"}
                         alt={medicine.name}
@@ -220,11 +220,11 @@ export default function PointOfSale() {
                       />
                     </div>
                     <CardContent className="p-3">
-                      <h3 className="font-medium text-white text-center mb-1">{medicine.name}</h3>
-                      <p className="text-center text-gray-300 mb-2">${medicine.price.toFixed(2)}</p>
+                      <h3 className="font-medium text-black text-center mb-1">{medicine.name}</h3>
+                      <p className="text-center text-black-300 mb-2">${medicine.price.toFixed(2)}</p>
                       <Button
                         onClick={() => addToCart(medicine)}
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-black"
                         size="sm"
                       >
                         Add to Bill
@@ -239,9 +239,9 @@ export default function PointOfSale() {
 
         {/* Right side - Bill */}
         <div className="lg:col-span-1">
-          <Card className="bg-gray-800 border border-gray-700 shadow-md">
-            <CardHeader className="border-b border-gray-700">
-              <CardTitle className="text-xl font-bold text-white flex items-center">
+          <Card className="bg-black-800 border border-black-700 shadow-md">
+            <CardHeader className="border-b border-black-700">
+              <CardTitle className="text-xl font-bold text-black flex items-center">
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Bill
               </CardTitle>
@@ -250,63 +250,63 @@ export default function PointOfSale() {
                   placeholder="Customer Name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                  className="bg-black-700 border-black-600 text-black placeholder:text-black-400"
                 />
                 <Input
                   placeholder="Customer Phone"
                   value={customerPhone}
                   onChange={(e) => setCustomerPhone(e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                  className="bg-black-700 border-black-600 text-black placeholder:text-black-400"
                 />
               </div>
             </CardHeader>
             <CardContent className="pt-4">
               {cart.length === 0 ? (
-                <div className="text-center py-8 text-gray-400">No items added to the bill yet</div>
+                <div className="text-center py-8 text-black-400">No items added to the bill yet</div>
               ) : (
                 <div>
                   <Table>
                     <TableHeader>
-                      <TableRow className="border-gray-700">
-                        <TableHead className="text-gray-300">Name</TableHead>
-                        <TableHead className="text-gray-300 text-right">Qty</TableHead>
-                        <TableHead className="text-gray-300 text-right">Price</TableHead>
-                        <TableHead className="text-gray-300 text-right">Total</TableHead>
-                        <TableHead className="text-gray-300 w-[50px]"></TableHead>
+                      <TableRow className="border-black-700">
+                        <TableHead className="text-black-300">Name</TableHead>
+                        <TableHead className="text-black-300 text-right">Qty</TableHead>
+                        <TableHead className="text-black-300 text-right">Price</TableHead>
+                        <TableHead className="text-black-300 text-right">Total</TableHead>
+                        <TableHead className="text-black-300 w-[50px]"></TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
                       {cart.map((item) => (
-                        <TableRow key={item.id} className="border-gray-700">
-                          <TableCell className="text-white">{item.name}</TableCell>
+                        <TableRow key={item.id} className="border-black-700">
+                          <TableCell className="text-black">{item.name}</TableCell>
                           <TableCell className="text-right">
                             <div className="flex items-center justify-end">
                               <Button
                                 variant="outline"
                                 size="icon"
-                                className="h-6 w-6 bg-gray-700 border-gray-600 text-gray-300"
+                                className="h-6 w-6 bg-black-700 border-black-600 text-black-300"
                                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
                               >
                                 <Minus className="h-3 w-3" />
                               </Button>
-                              <span className="w-8 text-center text-white">{item.quantity}</span>
+                              <span className="w-8 text-center text-black">{item.quantity}</span>
                               <Button
                                 variant="outline"
                                 size="icon"
-                                className="h-6 w-6 bg-gray-700 border-gray-600 text-gray-300"
+                                className="h-6 w-6 bg-black-700 border-black-600 text-black-300"
                                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
                               >
                                 <Plus className="h-3 w-3" />
                               </Button>
                             </div>
                           </TableCell>
-                          <TableCell className="text-right text-gray-300">${item.price.toFixed(2)}</TableCell>
-                          <TableCell className="text-right text-white">${item.total.toFixed(2)}</TableCell>
+                          <TableCell className="text-right text-black-300">${item.price.toFixed(2)}</TableCell>
+                          <TableCell className="text-right text-black">${item.total.toFixed(2)}</TableCell>
                           <TableCell>
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="h-7 w-7 text-red-400 hover:text-red-300 hover:bg-gray-700"
+                              className="h-7 w-7 text-red-400 hover:text-red-300 hover:bg-black-700"
                               onClick={() => removeFromCart(item.id)}
                             >
                               <Trash2 className="h-4 w-4" />
@@ -318,35 +318,35 @@ export default function PointOfSale() {
                   </Table>
 
                   <div className="mt-4 space-y-2">
-                    <div className="flex justify-between text-gray-300">
+                    <div className="flex justify-between text-black-300">
                       <span>Subtotal:</span>
                       <span>${calculateSubtotal().toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-300">Tax (%):</span>
+                      <span className="text-black-300">Tax (%):</span>
                       <Input
                         type="number"
                         value={tax}
                         onChange={(e) => setTax(Number.parseFloat(e.target.value) || 0)}
-                        className="w-20 h-8 bg-gray-700 border-gray-600 text-white"
+                        className="w-20 h-8 bg-black-700 border-black-600 text-black"
                       />
                     </div>
-                    <div className="flex justify-between font-bold text-lg pt-2 border-t border-gray-700">
-                      <span className="text-white">Total:</span>
-                      <span className="text-white">${calculateTotal().toFixed(2)}</span>
+                    <div className="flex justify-between font-bold text-lg pt-2 border-t border-black-700">
+                      <span className="text-black">Total:</span>
+                      <span className="text-black">${calculateTotal().toFixed(2)}</span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 mt-6">
                     <Button
                       variant="outline"
-                      className="bg-gray-700 border-gray-600 text-white hover:bg-gray-600"
+                      className="bg-black-700 border-black-600 text-black hover:bg-black-600"
                       onClick={handlePrint}
                     >
                       <Printer className="mr-2 h-4 w-4" />
                       Print
                     </Button>
-                    <Button className="bg-green-600 hover:bg-green-700 text-white" onClick={handleCheckout}>
+                    <Button className="bg-green-600 hover:bg-green-700 text-black" onClick={handleCheckout}>
                       <Save className="mr-2 h-4 w-4" />
                       Checkout
                     </Button>
