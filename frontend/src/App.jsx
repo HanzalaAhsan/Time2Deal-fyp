@@ -97,7 +97,7 @@ function App() {
 
   // ✅ Fetch inventory data from backend
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/api/inventory/")
+    axios.get("http://localhost:8000/api/inventory/")
       .then(response => {
         console.log("Inventory Data:", response.data);
         setInventoryData(response.data);

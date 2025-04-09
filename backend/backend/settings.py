@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "authentication",
+    "inventory",
 ]
 
 MIDDLEWARE = [
@@ -83,9 +84,13 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+     "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "your_database_name",  # Replace with your MySQL DB name
+        "USER": "your_mysql_user",     # Replace with your MySQL username
+        "PASSWORD": "your_mysql_password",  # Replace with your MySQL password
+        "HOST": "localhost",  # Keep it as localhost if running locally
+        "PORT": "3306",  # Default MySQL port
     }
 }
 
@@ -107,6 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+AUTH_USER_MODEL = "authentication.CustomUser"
 
 
 # Internationalization
