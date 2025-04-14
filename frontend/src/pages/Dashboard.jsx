@@ -57,7 +57,7 @@ const initialNotifications = [
   },
 ]
 
- function Dashboard({ sidebarOpen, setSidebarOpen, setAuth }) {
+export default function Dashboard({ sidebarOpen, setSidebarOpen, setAuth }) {
   console.log("Dashboard is rendering")
   const [notifications, setNotifications] = useState(initialNotifications)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -104,19 +104,14 @@ const initialNotifications = [
   }
 
   return (
-    <div className="p-8 bg-gray-900 min-h-screen">
+    <div className="p-8">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8 bg-gray-800 p-4 rounded-lg shadow-md border border-gray-700">
+      <div className="flex justify-between items-center mb-8 bg-white p-4 rounded-lg shadow-sm">
         <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden text-gray-300 hover:text-white hover:bg-gray-700"
-            onClick={() => setSidebarOpen(true)}
-          >
+          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
             <Menu className="h-6 w-6" />
           </Button>
-          <h1 className="text-2xl font-bold text-white">Al-Madina Pharmacy</h1>
+          <h1 className="text-2xl font-bold">Welcome back, Time2Deal</h1>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative hidden md:block">
@@ -124,14 +119,14 @@ const initialNotifications = [
             <input
               type="search"
               placeholder="Search..."
-              className="pl-10 pr-4 py-2 bg-gray-700 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-400"
+              className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {/* Notification Dropdown */}
           <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative text-gray-300 hover:text-white hover:bg-gray-700">
+              <Button variant="ghost" size="icon" className="relative">
                 <Bell className="h-5 w-5" />
                 {unreadCount > 0 && (
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 bg-red-500 text-white text-xs">
@@ -197,14 +192,14 @@ const initialNotifications = [
           <DropdownMenu open={isProfileOpen} onOpenChange={setIsProfileOpen}>
             <DropdownMenuTrigger asChild>
               <Avatar className="cursor-pointer">
-                <AvatarImage src="https://tse1.mm.bing.net/th?id=OIP.gMjkn2JkqfWi6CcI1JESnAHaIp&pid=Api&P=0&w=300&h=300" />
+                <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>Al-M</AvatarFallback>
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56 bg-gray-900 text-white border-gray-800">
               <div className="p-3 border-b border-gray-800">
                 <div className="font-medium text-white">Welcome!</div>
-                <div className="text-sm text-gray-400">{userName}</div>
+                <div className="text-sm text-gray-400"></div>
               </div>
               <DropdownMenuSeparator className="bg-gray-800" />
               <DropdownMenuItem
@@ -242,84 +237,84 @@ const initialNotifications = [
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="pb-2 border-b border-gray-700">
-            <CardTitle className="text-sm font-medium text-green-400">Out of Stock</CardTitle>
+        <Card className="bg-green-100">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Out of Stock</CardTitle>
           </CardHeader>
-          <CardContent className="pt-4">
-            <div className="text-4xl font-bold text-white">890</div>
+          <CardContent>
+            <div className="text-4xl font-bold">890</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="pb-2 border-b border-gray-700">
-            <CardTitle className="text-sm font-medium text-yellow-400">Discounts</CardTitle>
+        <Card className="bg-yellow-100">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Discounts</CardTitle>
           </CardHeader>
-          <CardContent className="pt-4">
-            <div className="text-4xl font-bold text-white">1,234</div>
+          <CardContent>
+            <div className="text-4xl font-bold">1,234</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="pb-2 border-b border-gray-700">
-            <CardTitle className="text-sm font-medium text-blue-400">Expired!</CardTitle>
+        <Card className="bg-blue-100">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Expired!</CardTitle>
           </CardHeader>
-          <CardContent className="pt-4">
-            <div className="text-4xl font-bold text-white">567</div>
+          <CardContent>
+            <div className="text-4xl font-bold">567</div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="pb-2 border-b border-gray-700">
-            <CardTitle className="text-sm font-medium text-red-400">Refunded</CardTitle>
+        <Card className="bg-red-100">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium">Refunded</CardTitle>
           </CardHeader>
-          <CardContent className="pt-4">
-            <div className="text-4xl font-bold text-white">123</div>
+          <CardContent>
+            <div className="text-4xl font-bold">123</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Notification Panels */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-700">
-            <CardTitle className="text-white">Expire Date Notification</CardTitle>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Expire Date Notification</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4 pt-4">
-            <div className="bg-gray-700 text-white p-4 rounded-lg border border-gray-600">
+          <CardContent className="space-y-4">
+            <div className="bg-gray-600 text-white p-4 rounded-lg">
               <p>Name: panadol</p>
               <p>Batch: 78678</p>
             </div>
-            <div className="bg-gray-700 text-white p-4 rounded-lg border border-gray-600">
+            <div className="bg-gray-200 p-4 rounded-lg">
               <p>Name: citizen</p>
               <p>Batch: 78679</p>
             </div>
-            <div className="bg-gray-700 text-white p-4 rounded-lg border border-gray-600">
+            <div className="bg-gray-200 p-4 rounded-lg">
               <p>Name: citizen</p>
               <p>Batch: 78679</p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-gray-800 border border-gray-700 shadow-md">
-          <CardHeader className="flex flex-row items-center justify-between border-b border-gray-700">
-            <CardTitle className="text-white">Out Of Stock</CardTitle>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Out Of Stock</CardTitle>
             <Button
               variant="outline"
               size="sm"
-              className="flex items-center gap-1 bg-gray-700 text-white border-gray-600 hover:bg-gray-600"
+              className="flex items-center gap-1"
               onClick={() => navigate("/out-of-stock")}
             >
               <ShoppingCart className="h-4 w-4" />
               Pre-order
             </Button>
           </CardHeader>
-          <CardContent className="space-y-4 pt-4">
-            <div className="bg-gray-700 text-white p-4 rounded-lg border border-gray-600">
+          <CardContent className="space-y-4">
+            <div className="bg-gray-200 p-4 rounded-lg">
               <p>Name: amoxilin</p>
               <p>Batch: 78690</p>
             </div>
-            <div className="bg-gray-700 text-white p-4 rounded-lg border border-gray-600">
+            <div className="bg-gray-200 p-4 rounded-lg">
               <p>Name: demo1</p>
               <p>Batch: 78690</p>
             </div>
@@ -329,5 +324,3 @@ const initialNotifications = [
     </div>
   )
 }
-
-export default Dashboard
