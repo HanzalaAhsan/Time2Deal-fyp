@@ -123,35 +123,35 @@ export default function Inventory() {
                 Add New Item
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-gray-800">
               <DialogHeader>
-                <DialogTitle className="text-lg font-semibold mb-4">Add New Inventory Item</DialogTitle>
+                <DialogTitle className="text-lg font-semibold mb-4 text-white">Add New Inventory Item</DialogTitle>
               </DialogHeader>
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">
+                  <Label htmlFor="name" className="text-right text-gray-300">
                     Name
                   </Label>
                   <Input
                     id="name"
                     value={newItem.name}
                     onChange={(e) => setNewItem({ ...newItem, name: e.target.value })}
-                    className="col-span-3"
+                    className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="batchId" className="text-right">
+                  <Label htmlFor="batchId" className="text-right text-gray-300">
                     Batch ID
                   </Label>
                   <Input
                     id="batchId"
                     value={newItem.batchId}
                     onChange={(e) => setNewItem({ ...newItem, batchId: e.target.value })}
-                    className="col-span-3"
+                    className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="quantity" className="text-right">
+                  <Label htmlFor="quantity" className="text-right text-gray-300">
                     Quantity
                   </Label>
                   <Input
@@ -159,11 +159,11 @@ export default function Inventory() {
                     type="number"
                     value={newItem.quantity}
                     onChange={(e) => setNewItem({ ...newItem, quantity: e.target.value })}
-                    className="col-span-3"
+                    className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="price" className="text-right">
+                  <Label htmlFor="price" className="text-right text-gray-300">
                     Price
                   </Label>
                   <Input
@@ -172,11 +172,11 @@ export default function Inventory() {
                     step="0.01"
                     value={newItem.price}
                     onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-                    className="col-span-3"
+                    className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                   />
                 </div>
                 <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="expiryDate" className="text-right">
+                  <Label htmlFor="expiryDate" className="text-right text-gray-300">
                     Expiry Date
                   </Label>
                   <Input
@@ -184,14 +184,14 @@ export default function Inventory() {
                     type="date"
                     value={newItem.expiryDate}
                     onChange={(e) => setNewItem({ ...newItem, expiryDate: e.target.value })}
-                    className="col-span-3"
+                    className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                   />
                 </div>
               </div>
               <DialogFooter>
                 <Button
                   onClick={handleAddItem}
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                  className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Add Item
                 </Button>
@@ -261,36 +261,36 @@ export default function Inventory() {
 
       {/* Edit Item Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] bg-gray-900 text-white border-gray-800">
           <DialogHeader>
-            <DialogTitle className="text-lg font-semibold mb-4">Edit Inventory Item</DialogTitle>
+            <DialogTitle className="text-lg font-semibold mb-4 text-white">Edit Inventory Item</DialogTitle>
           </DialogHeader>
           {editingItem && (
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="edit-name" className="text-right">
+                <Label htmlFor="edit-name" className="text-right text-gray-300">
                   Name
                 </Label>
                 <Input
                   id="edit-name"
                   value={editingItem.name}
                   onChange={(e) => setEditingItem({ ...editingItem, name: e.target.value })}
-                  className="col-span-3"
+                  className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="edit-batchId" className="text-right">
+                <Label htmlFor="edit-batchId" className="text-right text-gray-300">
                   Batch ID
                 </Label>
                 <Input
                   id="edit-batchId"
                   value={editingItem.batchId}
                   onChange={(e) => setEditingItem({ ...editingItem, batchId: e.target.value })}
-                  className="col-span-3"
+                  className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="edit-quantity" className="text-right">
+                <Label htmlFor="edit-quantity" className="text-right text-gray-300">
                   Quantity
                 </Label>
                 <Input
@@ -298,11 +298,11 @@ export default function Inventory() {
                   type="number"
                   value={editingItem.quantity}
                   onChange={(e) => setEditingItem({ ...editingItem, quantity: e.target.value })}
-                  className="col-span-3"
+                  className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="edit-price" className="text-right">
+                <Label htmlFor="edit-price" className="text-right text-gray-300">
                   Price
                 </Label>
                 <Input
@@ -311,11 +311,11 @@ export default function Inventory() {
                   step="0.01"
                   value={editingItem.price}
                   onChange={(e) => setEditingItem({ ...editingItem, price: e.target.value })}
-                  className="col-span-3"
+                  className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="edit-expiryDate" className="text-right">
+                <Label htmlFor="edit-expiryDate" className="text-right text-gray-300">
                   Expiry Date
                 </Label>
                 <Input
@@ -323,7 +323,7 @@ export default function Inventory() {
                   type="date"
                   value={editingItem.expiryDate}
                   onChange={(e) => setEditingItem({ ...editingItem, expiryDate: e.target.value })}
-                  className="col-span-3"
+                  className="col-span-3 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500"
                 />
               </div>
             </div>
@@ -331,7 +331,7 @@ export default function Inventory() {
           <DialogFooter>
             <Button
               onClick={handleEditItem}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+              className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
             >
               Update Item
             </Button>
