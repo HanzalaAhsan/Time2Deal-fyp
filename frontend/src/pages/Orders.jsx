@@ -14,7 +14,7 @@ const sampleOrders = [
   {
     id: 1001,
     customer: {
-      name: "John Doe",
+      name: "Ali",
       phone: "123-456-7890",
     },
     items: [
@@ -30,7 +30,7 @@ const sampleOrders = [
   {
     id: 1002,
     customer: {
-      name: "Jane Smith",
+      name: "Aslam",
       phone: "987-654-3210",
     },
     items: [
@@ -46,7 +46,7 @@ const sampleOrders = [
   {
     id: 1003,
     customer: {
-      name: "Robert Johnson",
+      name: "haseeb",
       phone: "555-123-4567",
     },
     items: [
@@ -63,7 +63,7 @@ const sampleOrders = [
   {
     id: 1004,
     customer: {
-      name: "Sarah Williams",
+      name: "ayesha",
       phone: "333-888-9999",
     },
     items: [{ id: 7, name: "Omithrazole", price: 280, quantity: 2, total: 560 }],
@@ -76,7 +76,7 @@ const sampleOrders = [
   {
     id: 1005,
     customer: {
-      name: "Walk-in Customer",
+      name: "sana",
       phone: "N/A",
     },
     items: [
