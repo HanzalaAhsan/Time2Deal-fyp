@@ -1,7 +1,17 @@
 "use client"
 import { useState } from "react";
 import { Link } from "react-router-dom"
-import { LayoutDashboard, Package, PackageMinus, Percent, Clock, Settings, LogOut } from "lucide-react"
+import {
+  LayoutDashboard,
+  Package,
+  PackageMinus,
+  Percent,
+  Clock,
+  Settings,
+  LogOut,
+  ShoppingCart,
+  FileText,
+} from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   AlertDialog,
@@ -32,26 +42,42 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
 
       <aside
         className={cn(
-          "fixed left-0 top-0 h-full w-64 bg-gray-200 p-4 transition-transform duration-200 ease-in-out z-40",
+          "fixed left-0 top-0 h-full w-64 bg-gray-900 p-4 transition-transform duration-200 ease-in-out z-40",
           isOpen ? "translate-x-0" : "-translate-x-full",
           "lg:translate-x-0", // Always show on large screens
         )}
       >
         <div className="space-y-4">
           <div className="py-2">
-            <h2 className="text-xl font-bold mb-4 px-4">Time2Deal</h2>
+            <h2 className="text-xl font-bold mb-4 px-4 text-white">Time2Deal</h2>
             <nav className="space-y-2">
               <Link
                 to="/"
-                className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <LayoutDashboard className="h-5 w-5" />
                 <span>Dashboard</span>
               </Link>
               <Link
+                to="/pos"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <ShoppingCart className="h-5 w-5" />
+                <span>Point of Sale</span>
+              </Link>
+              <Link
+                to="/orders"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                <FileText className="h-5 w-5" />
+                <span>Orders</span>
+              </Link>
+              <Link
                 to="/inventory"
-                className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Package className="h-5 w-5" />
@@ -59,7 +85,7 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
               </Link>
               <Link
                 to="/out-of-stock"
-                className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <PackageMinus className="h-5 w-5" />
@@ -67,7 +93,7 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
               </Link>
               <Link
                 to="/discounts"
-                className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Percent className="h-5 w-5" />
@@ -75,7 +101,7 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
               </Link>
               <Link
                 to="/expired-medicines"
-                className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+                className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 <Clock className="h-5 w-5" />
@@ -87,14 +113,14 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
           <div className="absolute bottom-8 space-y-2 w-[calc(100%-2rem)]">
             <Link
               to="/settings"
-              className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors"
+              className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors"
               onClick={() => setIsOpen(false)}
             >
               <Settings className="h-5 w-5" />
               <span>Settings</span>
             </Link>
             <button
-              className="flex items-center space-x-3 px-4 py-2 text-gray-700 hover:bg-gray-300 rounded-lg transition-colors w-full"
+              className="flex items-center space-x-3 px-4 py-2 text-gray-300 hover:bg-gray-800 rounded-lg transition-colors w-full"
               onClick={() => setShowLogoutDialog(true)}
             >
               <LogOut className="h-5 w-5" />
@@ -105,14 +131,20 @@ export function Sidebar({ isOpen, setIsOpen, setAuth }) {
       </aside>
 
       <AlertDialog open={showLogoutDialog} onOpenChange={setShowLogoutDialog}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-gray-800 text-white border border-gray-700">
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
-            <AlertDialogDescription>You will need to login again to access your account.</AlertDialogDescription>
+            <AlertDialogTitle className="text-white">Are you sure you want to logout?</AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-400">
+              You will need to login again to access your account.
+            </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleLogout}>Logout</AlertDialogAction>
+            <AlertDialogCancel className="bg-gray-700 text-white border-gray-600 hover:bg-gray-600">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={handleLogout} className="bg-red-600 text-white hover:bg-red-700">
+              Logout
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
